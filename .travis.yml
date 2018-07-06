@@ -1,14 +1,9 @@
----
-language: scala
-scala:
-   - 2.11.8
-   
-jdk:
-  - oraclejdk8
-   
-env:
-  - working_dir: embedded-streaming-services
-  
+language: python
+python:
+- '3.6'
+before_install:
+- sudo apt-get update
+- sudo apt-get install -qq python-numpy python-scipy
 script:
-  - 'cd ${working_dir}'
-  - 'sbt -jvm-opts travis/jvmopts.test test'
+- python setup.py test
+- python setup.py sdist
